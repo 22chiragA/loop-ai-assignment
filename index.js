@@ -4,6 +4,9 @@ const { enqueueIngestion } = require('./queue.js'); // your implementation file
 
 const app = express();
 app.use(express.json());
+app.get("/", (req, res) => {
+    res.send("API is running.");
+  });
 
 app.post('/ingest', (req, res) => {
   const { ids, priority } = req.body;
