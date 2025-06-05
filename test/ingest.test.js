@@ -25,8 +25,8 @@ async function runTest() {
   const status1 = await axios.get(`${API}/status/${id1}`);
   const status2 = await axios.get(`${API}/status/${id2}`);
 
-  console.log("📊 Status MEDIUM:", status1.data);
-  console.log("📊 Status HIGH:", status2.data);
+  console.log("Status MEDIUM:", status1.data);
+  console.log("Status HIGH:", status2.data);
 }
 
 runTest();

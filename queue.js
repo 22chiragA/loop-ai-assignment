@@ -24,7 +24,7 @@ function enqueueIngestion(ids, priority, ingestionId) {
     batches,
   });
 
-  // Sort based on priority and time
+
   queue.sort((a, b) => {
     const prioMap = { HIGH: 0, MEDIUM: 1, LOW: 2 };
     if (prioMap[a.priority] !== prioMap[b.priority]) {
@@ -50,7 +50,7 @@ async function processQueue() {
   updateBatchStatus(job.ingestionId, batch.batch_id, "triggered");
 
   const promises = batch.ids.map(async (id) => {
-    await delay(1000); // simulate 1 second processing per ID
+    await delay(1000); 
     await mockExternalApi(id);
   });
 
@@ -58,7 +58,6 @@ async function processQueue() {
   updateBatchStatus(job.ingestionId, batch.batch_id, "completed");
 }
 
-// Run processor every 5 seconds
 setInterval(processQueue, 5000);
 
 module.exports = { enqueueIngestion };
